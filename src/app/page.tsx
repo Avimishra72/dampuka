@@ -1,11 +1,15 @@
 "use client";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
 import { FaUser } from "react-icons/fa";
 
 export default function Home() {
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+
   return (
     <>
       {/* Header */}
@@ -212,24 +216,84 @@ export default function Home() {
             <div className="text-center mb-8">
               <h2 className="text-5xl font-bold">What Our Customers Say</h2>
             </div>
-            <div>
+            <div className="mx-auto max-w-6xl">
               <Swiper
-                slidesPerView={3}
+                slidesPerView={2}
                 spaceBetween={30}
-                navigation={true}
                 modules={[Navigation]}
+                onInit={(swiper) => {
+                  // assign refs *after* swiper is ready
+                  // and make sure they are not null
+                  if (prevRef.current && nextRef.current) {
+                    swiper.params.navigation = {
+                      prevEl: prevRef.current,
+                      nextEl: nextRef.current,
+                    };
+                    swiper.navigation.init();
+                    swiper.navigation.update();
+                  }
+                }}
                 className="mySwiper"
               >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
+                <SwiperSlide className="!flex !h-auto">
+                  <div className="p-6 border border-gray-300 rounded-lg h-auto flex flex-col ">
+                    <h3 className="text-xl font-semibold mb-3">
+                      Customer Name
+                    </h3>
+                    <p className="mb-4">
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Rem ipsa repellat tempora eos earum, minima, expedita
+                      voluptas dignissimos culpa eligendi tenetur amet! Ut modi
+                      veritatis iure incidunt error, ea odit temporibus,
+                      molestias voluptate harum voluptatem praesentium
+                      dignissimos illo provident, laborum iusto quaerat commodi
+                      vitae nesciunt. Eos mollitia nulla rerum dignissimos.
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className="!flex !h-auto">
+                  <div className="p-6 border border-gray-300 rounded-lg h-auto flex flex-col ">
+                    <h3 className="text-xl font-semibold mb-3">
+                      Customer Name
+                    </h3>
+                    <p className="mb-4">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Fuga nemo natus dolore fugit ipsum sit? Magni ea illum
+                      deleniti enim.
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className="!flex !h-auto">
+                  <div className="p-6 border border-gray-300 rounded-lg h-auto flex flex-col ">
+                    <h3 className="text-xl font-semibold mb-3">
+                      Customer Name
+                    </h3>
+                    <p className="mb-4">
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Rem ipsa repellat tempora eos earum, minima, expedita
+                      voluptas dignissimos culpa eligendi tenetur amet! Ut modi
+                      veritatis iure incidunt error, ea odit temporibus,
+                      molestias voluptate harum voluptatem praesentium
+                      dignissimos illo provident, laborum iusto quaerat commodi
+                      vitae nesciunt. Eos mollitia nulla rerum dignissimos.
+                    </p>
+                  </div>
+                </SwiperSlide>
               </Swiper>
+              <div className="flex gap-4 mt-8 justify-center w-full">
+                <button
+                  ref={prevRef}
+                  className="w-8 h-8 border border-black-500 flex items-center justify-center cursor-pointer"
+                >
+                  <div className="text-black-500 ">◀</div>
+                </button>
+                <button
+                  ref={nextRef}
+                  className="w-8 h-8 border border-black-500 flex items-center justify-center cursor-pointer"
+                >
+                  <div className="text-black-500 ">▶</div>
+                </button>
+              </div>
             </div>
           </div>
         </section>
