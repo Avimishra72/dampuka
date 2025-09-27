@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Classic Roasted Makhana",
+    "price": 250,
+    "image": "/assets/product.jpeg"
+  },
+  {
+    "id": 2,
+    "title": "Cheese Flavored Makhana",
+    "price": 300,
+    "image": "/assets/product.jpeg"
+  },
+  {
+    "id": 3,
+    "title": "Spicy Masala Makhana",
+    "price": 275,
+    "image": "/assets/product.jpeg"
+  },
+  {
+    "id": 4,
+    "title": "Caramel Sweet Makhana",
+    "price": 320,
+    "image": "/assets/product.jpeg"
+  },
+  {
+    "id": 5,
+    "title": "Butter Roasted Makhana",
+    "price": 280,
+    "image": "/assets/product.jpeg"
+  },
+  {
+    "id": 6,
+    "title": "Tangy Tomato Makhana",
+    "price": 290,
+    "image": "/assets/product.jpeg"
+  },
+  {
+    "id": 7,
+    "title": "Mint Masala Makhana",
+    "price": 310,
+    "image": "/assets/product.jpeg"
+  },
+  {
+    "id": 8,
+    "title": "Honey Glazed Makhana",
+    "price": 330,
+    "image": "/assets/product.jpeg"
+  }
+]

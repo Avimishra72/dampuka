@@ -1,14 +1,19 @@
 "use client";
-import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaUser } from "react-icons/fa";
 
+// Components
+import ProductCard from "@/components/ProductCard";
+
+// Data
+import productsData from "../data/productsData.json";
+
 export default function Home() {
-  const prevRef = useRef<HTMLButtonElement | null>(null);
-  const nextRef = useRef<HTMLButtonElement | null>(null);
+  // take top 4 products
+  const topProducts = productsData.slice(0, 4);
 
   return (
     <>
@@ -76,97 +81,9 @@ export default function Home() {
             </div>
 
             <div className="flex gap-x-3 gap-y-10 flex-wrap mb-5">
-              <div className="w-[calc(25%-12px)]">
-                <div className="w-full h-[300px] mb-3">
-                  <img
-                    src="../assets/product.jpeg"
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold">Product Title</h3>
-                  <p className="text-gray-600">$99.99</p>
-                </div>
-              </div>
-              <div className="w-[calc(25%-12px)]">
-                <div className="w-full h-[300px] mb-3">
-                  <img
-                    src="../assets/product.jpeg"
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold">Product Title</h3>
-                  <p className="text-gray-600">$99.99</p>
-                </div>
-              </div>
-              <div className="w-[calc(25%-12px)]">
-                <div className="w-full h-[300px] mb-3">
-                  <img
-                    src="../assets/product.jpeg"
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold">Product Title</h3>
-                  <p className="text-gray-600">$99.99</p>
-                </div>
-              </div>
-              <div className="w-[calc(25%-12px)]">
-                <div className="w-full h-[300px] mb-3">
-                  <img
-                    src="../assets/product.jpeg"
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold">Product Title</h3>
-                  <p className="text-gray-600">$99.99</p>
-                </div>
-              </div>
-              <div className="w-[calc(25%-12px)]">
-                <div className="w-full h-[300px] mb-3">
-                  <img
-                    src="../assets/product.jpeg"
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold">Product Title</h3>
-                  <p className="text-gray-600">$99.99</p>
-                </div>
-              </div>
-              <div className="w-[calc(25%-12px)]">
-                <div className="w-full h-[300px] mb-3">
-                  <img
-                    src="../assets/product.jpeg"
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold">Product Title</h3>
-                  <p className="text-gray-600">$99.99</p>
-                </div>
-              </div>
-              <div className="w-[calc(25%-12px)]">
-                <div className="w-full h-[300px] mb-3">
-                  <img
-                    src="../assets/product.jpeg"
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold">Product Title</h3>
-                  <p className="text-gray-600">$99.99</p>
-                </div>
-              </div>
+              {topProducts.map((product) => (
+                <ProductCard key={product.id} {...product} />
+              ))}
             </div>
             <button className="bg-[#024E82] border border-[#024E82] mx-auto flex text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-[#024E82] transition duration-300">
               Shop Now
@@ -221,19 +138,7 @@ export default function Home() {
                 slidesPerView={2}
                 spaceBetween={30}
                 modules={[Navigation]}
-                onInit={(swiper) => {
-                  // assign refs *after* swiper is ready
-                  // and make sure they are not null
-                  if (prevRef.current && nextRef.current) {
-                    swiper.params.navigation = {
-                      prevEl: prevRef.current,
-                      nextEl: nextRef.current,
-                    };
-                    swiper.navigation.init();
-                    swiper.navigation.update();
-                  }
-                }}
-                className="mySwiper"
+                navigation={true}
               >
                 <SwiperSlide className="!flex !h-auto">
                   <div className="p-6 border border-gray-300 rounded-lg h-auto flex flex-col ">
@@ -280,20 +185,6 @@ export default function Home() {
                   </div>
                 </SwiperSlide>
               </Swiper>
-              <div className="flex gap-4 mt-8 justify-center w-full">
-                <button
-                  ref={prevRef}
-                  className="w-8 h-8 border border-black-500 flex items-center justify-center cursor-pointer"
-                >
-                  <div className="text-black-500 ">◀</div>
-                </button>
-                <button
-                  ref={nextRef}
-                  className="w-8 h-8 border border-black-500 flex items-center justify-center cursor-pointer"
-                >
-                  <div className="text-black-500 ">▶</div>
-                </button>
-              </div>
             </div>
           </div>
         </section>
