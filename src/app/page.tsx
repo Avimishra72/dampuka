@@ -3,10 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { FaUser } from "react-icons/fa";
 
 // Components
 import ProductCard from "@/components/ProductCard";
+import Header from "@/components/Header";
 
 // Data
 import productsData from "../data/productsData.json";
@@ -18,34 +18,7 @@ export default function Home() {
   return (
     <>
       {/* Header */}
-      <header className="flex items-center justify-between bg-white text-black fixed w-full top-0 left-0 z-999 shadow-md h-[80px]">
-        <div className="container mx-auto flex items-center justify-between h-[80px] px-4">
-          <div className="flex items-center gap-10">
-            <h1 className="text-2xl font-bold">DAMPUKA</h1>
-            <nav>
-              <ul className="flex gap-4">
-                <li>
-                  <a href="#" className="hover:underline">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Buy Now
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          <FaUser />
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="pt-[80px]">
@@ -55,7 +28,7 @@ export default function Home() {
             <img
               src="../assets/bg.jpeg"
               className="w-full h-full object-cover object-right"
-              alt=""
+              alt="Banner"
             />
           </div>
           <div className="container mx-auto px-4 h-full flex items-center">

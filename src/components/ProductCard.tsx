@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 type ProductCardProps = {
   id: number;
@@ -16,9 +17,12 @@ const ProductCard = ({ id, title, price, image }: ProductCardProps) => {
           <button className="bg-[#024E82] border border-[#024E82] mx-auto flex text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-[#024E82] transition duration-300 flex-1 justify-center">
             Buy Now
           </button>
-          <button className="bg-[#024E82] border border-[#024E82] mx-auto flex text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-[#024E82] transition duration-300 flex-1 justify-center">
+          <Link
+            href={`/productDetail/${id}`}
+            className="bg-[#024E82] border border-[#024E82] mx-auto flex text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-[#024E82] transition duration-300 flex-1 justify-center"
+          >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
       <div className="text-center">
